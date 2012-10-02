@@ -1,0 +1,24 @@
+{
+    "name": "node-artnet-dmxctrl",
+    "version": "0.0.1",
+    "author": "xandy <xandy@hackerspace-bamberg.de>",
+    "description": "ircbot for the backspace irc channel",
+    "contributors": [
+        {
+            "name": "xandy",
+            "email": "xandy@hackerspace-bamberg.de"
+        }
+    ],
+    "main": "./lightctrl.js",
+    "repository": {
+    },
+    "keywords": [
+        "dmx"
+    ],
+    "dependencies" : {
+        "artnet":       "https://github.com/ydnax/artnet-node/tarball/master"
+    },
+    "engine": {
+        "node": ">=0.6"
+    }
+}
