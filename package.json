@@ -1,8 +1,8 @@
 {
-    "name": "node-artnet-dmxctrl",
+    "name": "node-dmxlights",
     "version": "0.0.1",
     "author": "xandy <xandy@hackerspace-bamberg.de>",
-    "description": "ircbot for the backspace irc channel",
+    "description": "advanced dmx light control via artnet",
     "contributors": [
         {
             "name": "xandy",

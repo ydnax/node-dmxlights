@@ -3,14 +3,14 @@ var artnet = require('artnet-node');
 var Client = function(ip, port){
     this.ip      = ip;
     this.port    = port || 6454;
-    this.client  = new artnet.ArtNetClient(this.ip, this.port);
+    this.client  = new artnet.Client.ArtNetClient(this.ip, this.port);
     this.client.UNIVERSE = [1,0];
     this.dmx_dta = new Array(512);
 };
 Client.prototype.setChannel = function(channel, value){
     this.dmx_dta[channel-1] = value;
 };
-Client.prototype.channelsCommit = function(){
+Client.prototype.flush = function(){
     this.client.send(this.dmx_dta);
 };
 module.exports.DmxClient = Client;
@@ -47,17 +47,16 @@ var Device = function(client, channel, mode){
 Device.prototype.setMode = function(mode){
     this.mode = mode;
 };
-Device.prototype.setVals = function(values){
+Device.prototype.setVals = function(values, flush){
     this.client.setChannel(this.channel, this.mode.mode);
     for(key in values){
-        if(!this.mode[key]){
+        if(this.mode[key]==undefined){
             console.log("key %s not known in current mode.", key);
             continue
         }
-        //console.log(key);
-        //console.log(this.mode)
         this.client.setChannel(this.channel + this.mode[key], values[key]);
     }
-    //this.client.channelsCommit();
+    if(flush)
+        this.client.flush();
 };
 module.exports.Device = Device;
