@@ -60,3 +60,4 @@ Device.prototype.setVals = function(values, flush){
         this.client.flush();
 };
 module.exports.Device = Device;
+module.exports.Colors = require('./colors.js');
