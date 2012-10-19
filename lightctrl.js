@@ -49,7 +49,7 @@ Device.prototype.setMode = function(mode){
 };
 Device.prototype.setVals = function(values, flush){
     if(this.mode!=-1)
-        this.client.setChannel(this.channel, this.mode);
+        this.client.setChannel(this.channel, this.mode.mode);
     for(key in values){
         if(this.mode[key]==undefined){
             console.log("key %s not known in current mode.", key);
